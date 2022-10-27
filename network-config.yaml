@@ -1,0 +1,36 @@
+development:
+- cmd: ./ganache.sh
+  cmd_settings:
+    accounts: 10
+    evm_version: istanbul
+    gas_limit: 12000000
+    mnemonic: brownie
+    port: 8545
+    fork: optimism-main
+  host: http://127.0.0.1
+  id: optimism-fork
+  name: Ganache-CLI (Optimism-Mainnet Fork)
+- cmd: ./ganache.sh
+  cmd_settings:
+    accounts: 10
+    evm_version: istanbul
+    gas_limit: 12000000
+    mnemonic: brownie
+    port: 8545
+    fork: arbitrum-main
+  host: http://127.0.0.1
+  id: arbitrum-fork
+  name: Ganache-CLI (Arbitrum-Mainnet Fork)
+live:
+- name: Optimism
+  networks:
+  - chainid: 10
+    host: https://opt-mainnet.g.alchemy.com/v2/$WEB3_ALCHEMY_APY_KEY
+    id: optimism-main
+    name: Optimism (Alchemy)
+- name: Arbitrum
+  networks:
+  - chainid: 42161
+    host: https://arb-mainnet.g.alchemy.com/v2/$WEB3_ALCHEMY_APY_KEY
+    id: arbitrum-main
+    name: Arbitrum (Alchemy)

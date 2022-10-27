@@ -1,0 +1,10 @@
+ldo_token_address = '0x13Ad51ed4F1B7e9Dc168d8a00cB3f4dDD85EfA60'
+manager_owner_address = '0x1dcA41859Cd23b526CBe74dA8F48aC96e14B1A29'
+wsteth_token_address = '0x5979D7b546E38E414F7E9822514be443A4800529'
+rewards_contract_address = '0x098EF55011B6B8c99845128114A9D9159777d697'
+
+# TESTS
+usdt_token_address = '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9'
+usdt_holder_address = '0xb6cfcf89a7b22988bfc96632ac2a9d6dab60d641'
+ldo_holder_address = '0x8c2b8595ea1b627427efe4f29a64b145df439d16'
+curve_admin_address = '0x745748bcFd8F9c2De519a71D789be8A63dd7d66C'
