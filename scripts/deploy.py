@@ -21,6 +21,7 @@ def main():
 
     print(f'Deployer: {deployer}')
     print(f'REWARDS CONTRACT: {rewards_contract}')
+    print(f'LDO TOKEN: {ldo_token_address}')
     print(f'OWNER: {manager_owner_address}')
     print(f'MINIMAL REWARDS AMOUNT: {min_rewards_amount} ({min_rewards_amount / 1e18})')
     sys.stdout.write('Proceed? [y/n]: ')
