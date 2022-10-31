@@ -5,8 +5,6 @@ from utils.config import rewards_contract_address, min_rewards_amount, network_n
 from os.path import exists
 import json
 
-deployment_file_path = f'deployed-{network_name()}.json'
-
 rewards_period = 3600 * 24 * 7
 rewards_amount = 5_000 * 10**18
 
@@ -123,9 +121,13 @@ def test_acceptance(
     ldo_token, 
     stranger,
     rewards_contract,
-    curve_admin,
     helpers
 ):
+    deployment_file_path = f'deployed-{network_name()}.json'
+
+    if not exists(deployment_file_path):
+        pytest.skip(f'no RewardsManager deployed on {network_name()}')
+
     chain.sleep(3600*3) 
     chain.mine()
     
