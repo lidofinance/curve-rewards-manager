@@ -1,6 +1,5 @@
 ldo_token_address = '0x13Ad51ed4F1B7e9Dc168d8a00cB3f4dDD85EfA60'
 manager_owner_address = '0x1dcA41859Cd23b526CBe74dA8F48aC96e14B1A29'
-wsteth_token_address = '0x5979D7b546E38E414F7E9822514be443A4800529'
 rewards_contract_address = '0x098EF55011B6B8c99845128114A9D9159777d697'
 
 # TESTS
