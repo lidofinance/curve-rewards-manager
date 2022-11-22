@@ -180,6 +180,11 @@ def replace_me_by_other_distributor(_to: address):
 
 @internal
 def _safe_transfer(_token: address, _to: address, _value: uint256) -> bool:
+    """
+    @notice 
+        Used to solve Vyper SafeERC20 issue
+        https://github.com/vyperlang/vyper/issues/2202
+    """
     _response: Bytes[32] = raw_call(
         _token,
         concat(
