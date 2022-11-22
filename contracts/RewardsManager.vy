@@ -43,7 +43,7 @@ rewards_iteration: public(uint256)
 min_rewards_amount: immutable(uint256)
 owner: immutable(address)
 rewards_contract: immutable(address)
-ldo_token: immutable(address)
+rewards_token: immutable(address)
 SECONDS_PER_WEEK: constant(uint256) = 7 * 24 * 60 * 60
 WEEKS_PER_PERIOD: constant(uint256) = 4
 
@@ -53,12 +53,12 @@ def __init__(
     _owner: address, 
     _min_rewards_amount: uint256, 
     _rewards_contract: address,
-    _ldo_token: address
+    _rewards_token: address
 ):
     owner = _owner
     min_rewards_amount = _min_rewards_amount
     rewards_contract = _rewards_contract
-    ldo_token = _ldo_token
+    rewards_token = _rewards_token
 
 
 @view
@@ -75,14 +75,14 @@ def rewards_contract() -> address:
 
 @view
 @external
-def ldo_token() -> address:
-    return ldo_token
+def rewards_token() -> address:
+    return rewards_token
 
 
 @view
 @internal
 def _curve_period_finish() -> uint256:
-    reward_data: Reward = LiquidityGauge(rewards_contract).reward_data(ldo_token)
+    reward_data: Reward = LiquidityGauge(rewards_contract).reward_data(rewards_token)
     return reward_data.period_finish
 
 
@@ -98,11 +98,11 @@ def start_next_rewards_period():
     @notice
         Starts the next rewards period of duration `rewards_contract.deposit_reward_token(address, uint256)`,
         distributing `self.weekly_amount` tokens throughout each week of the period. The current
-        rewards period must be finished by this time and LDO balance not lower then `self.weekly_amount`.
-        Ones per 4 calls recalculates `self.weekly_amount` based on self LDO balance. Balance required 
+        rewards period must be finished by this time and rewards token balance not lower then `self.weekly_amount`.
+        Ones per 4 calls recalculates `self.weekly_amount` based on self rewards token balance. Balance required 
         not to be lower then `min_rewards_amount`
     """
-    amount: uint256 = ERC20(ldo_token).balanceOf(self)
+    amount: uint256 = ERC20(rewards_token).balanceOf(self)
     iteration: uint256 = self.rewards_iteration    
     rewards_amount: uint256 = 0
 
@@ -123,8 +123,8 @@ def start_next_rewards_period():
 
     self.rewards_iteration = (iteration + 1) % WEEKS_PER_PERIOD
 
-    ERC20(ldo_token).approve(rewards_contract, rewards_amount)
-    LiquidityGauge(rewards_contract).deposit_reward_token(ldo_token, rewards_amount)
+    ERC20(rewards_token).approve(rewards_contract, rewards_amount)
+    LiquidityGauge(rewards_contract).deposit_reward_token(rewards_token, rewards_amount)
 
     log NewRewardsPeriodStarted(rewards_amount)
 
@@ -173,7 +173,7 @@ def replace_me_by_other_distributor(_to: address):
     """
     assert msg.sender == owner, "not permitted"
     assert _to != ZERO_ADDRESS, "zero address not allowed"
-    LiquidityGauge(rewards_contract).set_reward_distributor(ldo_token, _to)
+    LiquidityGauge(rewards_contract).set_reward_distributor(rewards_token, _to)
 
     log RewardsContractTransferred(_to)
 

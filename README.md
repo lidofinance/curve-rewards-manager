@@ -35,7 +35,25 @@ poetry shell
 
 ## Testing
 
-`brownie test -s`
+Testing environment is provided for Optimism and Arbitrum networks
+
+Alchemy API key should be provided for testing
+
+`export WEB3_ALCHEMY_APY_KEY=`
+
+Running test suites
+
+`brownie test -s --network optimism-fork`
+
+`brownie test -s --network arbitrum-fork`
+
+Acceptance tests
+
+Require contracts addresses in `deployed-{network_name}.json`
+
+`brownie test -s tests/test_accetance.py --network optimism-fork`
+
+`brownie test -s tests/test_accetance.py --network arbitrum-fork`
 
 ## Deploying Environment
 
@@ -43,6 +61,8 @@ The `deploy.py` script is in charge of the `RewardsManager` contract on-chain de
 The following environment variables needs to be set for the script's execution:
 
 * `DEPLOYER` - deployer account
+
+Deployed tx, contract address and deploy params will be placed in `deployed-{network_name}.json`
 
 ## Specification
 
