@@ -9,7 +9,7 @@ rewards_period = 3600 * 24 * 7
 rewards_amount = 5_000 * 10**18
 
 
-def test_acceptance(ldo_token, stranger, rewards_contract, helpers, curve_admin):
+def test_acceptance(ldo_token, stranger, rewards_contract, helpers, accounts):
     deployment_file_path = f"deployed-{network_name()}.json"
 
     if not exists(deployment_file_path):
@@ -29,8 +29,9 @@ def test_acceptance(ldo_token, stranger, rewards_contract, helpers, curve_admin)
 
     reward_data = rewards_contract.reward_data(ldo_token)
     if reward_data[0] != rewards_manager:
+        current_distributor = accounts.at(reward_data[0], {"force": True})
         rewards_contract.set_reward_distributor(
-            ldo_token, rewards_manager, {"from": curve_admin}
+            ldo_token, rewards_manager, {"from": current_distributor}
         )
     reward_data = rewards_contract.reward_data(ldo_token)
 

@@ -12,9 +12,9 @@ def test_happy_path(
     manager_owner,
     stranger,
     rewards_contract,
-    curve_admin,
     deployer,
     helpers,
+    accounts,
 ):
 
     chain.sleep(rewards_period)
@@ -30,8 +30,9 @@ def test_happy_path(
 
     reward_data = rewards_contract.reward_data(ldo_token)
     if reward_data[0] != rewards_manager:
+        current_distributor = accounts.at(reward_data[0], {"force": True})
         rewards_contract.set_reward_distributor(
-            ldo_token, rewards_manager, {"from": curve_admin}
+            ldo_token, rewards_manager, {"from": current_distributor}
         )
     reward_data = rewards_contract.reward_data(ldo_token)
 
