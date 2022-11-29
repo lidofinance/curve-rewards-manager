@@ -98,9 +98,9 @@ def start_next_rewards_period():
     @notice
         Starts the next rewards period of duration `rewards_contract.deposit_reward_token(address, uint256)`,
         distributing `self.weekly_amount` tokens throughout each week of the period. The current
-        rewards period must be finished by this time and rewards token balance not lower then `self.weekly_amount`.
-        Ones per 4 calls recalculates `self.weekly_amount` based on self rewards token balance. Balance required 
-        not to be lower then `min_rewards_amount`
+        rewards period must be finished by this time and rewards token balance not lower than `self.weekly_amount`.
+        Once per 4 calls recalculates `self.weekly_amount` based on self rewards token balance. Balance required 
+        not to be lower than `min_rewards_amount`
     """
     amount: uint256 = ERC20(rewards_token).balanceOf(self)
     iteration: uint256 = self.rewards_iteration    
