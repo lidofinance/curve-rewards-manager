@@ -21,7 +21,7 @@ def test_acceptance(ldo_token, stranger, rewards_contract, helpers, accounts):
     f = open(deployment_file_path, "r")
     deployment_data = json.load(f)
     rewards_manager = RewardsManager.at(
-        deployment_data["rewardsManager"]["baseAddress"]
+        deployment_data["curveRewardsManager"]["baseAddress"]
     )
     f.close()
 
