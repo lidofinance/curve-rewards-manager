@@ -22,17 +22,17 @@ def network_name() -> Optional[str]:
     return net_name
 
 
-if network_name() in ("optimism", "optimism-fork"):
+if network_name() in ("optimism-main", "optimism-fork"):
     print(f"Using config_optimism.py addresses")
     from utils.config_optimism import *
-elif network_name() in ("arbitrum", "arbitrum-fork"):
+elif network_name() in ("arbitrum-main", "arbitrum-fork"):
     print(f"Using arbitrum.py addresses")
     from utils.config_arbitrum import *
 else:
     raise EnvironmentError(f"{network_name()} is not supported")
 
 
-min_rewards_amount = 5000 * 10**18
+min_rewards_amount = 3000 * 10**18
 
 
 def get_is_live():
