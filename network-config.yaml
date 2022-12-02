@@ -28,9 +28,11 @@ live:
     host: https://opt-mainnet.g.alchemy.com/v2/$WEB3_ALCHEMY_APY_KEY
     id: optimism-main
     name: Optimism (Alchemy)
+    explorer: https://optimistic.etherscan.io/
 - name: Arbitrum
   networks:
   - chainid: 42161
     host: https://arb-mainnet.g.alchemy.com/v2/$WEB3_ALCHEMY_APY_KEY
     id: arbitrum-main
     name: Arbitrum (Alchemy)
+    explorer: https://arbiscan.io/

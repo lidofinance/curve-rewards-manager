@@ -17,7 +17,7 @@ def test_acceptance(
     accounts,
     ldo_holder,
 ):
-    deployment_file_path = f"deployed-{network_name()}.json"
+    deployment_file_path = f"deployed-{network_name().replace('fork', 'main')}.json"
 
     if not exists(deployment_file_path):
         pytest.skip(f"no RewardsManager deployed on {network_name()}")
