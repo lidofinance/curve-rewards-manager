@@ -1,0 +1,13 @@
+{
+    "networkId": 10,
+    "curveRewardsManager": {
+        "constructorParams": [
+            "0x5033823F27c5f977707B58F0351adcD732C955Dd",
+            3000000000000000000000,
+            "0xD53cCBfED6577d8dc82987e766e75E3cb73a8563",
+            "0xFdb794692724153d1488CcdBE0C56c252596735F"
+        ],
+        "baseAddress": "0xd420d6c8aa81c087829a64ce59936b7c1176a81a",
+        "tx": "0xb5d62203224aa933e055d9dcc2f747c9762858264dccb597be8c0b5ee512125b"
+    }
+}
